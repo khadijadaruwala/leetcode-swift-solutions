@@ -1,14 +1,17 @@
+
+//Kadane’s Algorithm
+/*Time complexity - O(n) and Space Complexity - O(1) */
+
 class Solution {
     func maxSubArray(_ nums: [Int]) -> Int {
-        var resultMax = nums[0], currentMax = nums[0]
+        var currentSum = nums[0]
+        var maxSum = nums[0]
         
-        if nums.count > 1{
-            for index in 1...nums.count - 1{
-                var temp = currentMax + nums[index]
-                currentMax = max(temp, nums[index])
-                resultMax = max(resultMax, currentMax)
-            }
+        for i in 1..<nums.count {
+            currentSum = max(nums[i], currentSum + nums[i])
+            maxSum = max(maxSum, currentSum)
         }
-        return resultMax
+        
+        return maxSum
     }
 }

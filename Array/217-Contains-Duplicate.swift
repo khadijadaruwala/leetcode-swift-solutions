@@ -1,14 +1,13 @@
+/* Time complexity - O(n)  Space complexity - O(n) */
 class Solution {
     func containsDuplicate(_ nums: [Int]) -> Bool {
         
-        var dict: [Int: Bool] = [Int: Bool]()
-        if nums.count > 1 {
-            for i in 0...nums.count - 1{
-                if dict.keys.contains(nums[i]) {
-                    return true
-                } else {
-                    dict[nums[i]] = true
-                }
+        var dict = [Int: Bool]()
+        for i in nums {
+            if let item = dict[i] {
+                return true
+            } else {
+                dict[i] = true
             }
         }
         return false
